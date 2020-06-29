@@ -1,7 +1,7 @@
-package com.example.DrinkControl.config;
+package com.challange.drinkcontrol.config;
 
-import com.example.DrinkControl.domain.DrinkAlcoholic;
-import com.example.DrinkControl.domain.DrinkNonAlcoholic;
+import com.challange.drinkcontrol.domain.DrinkAlcoholic;
+import com.challange.drinkcontrol.domain.DrinkNonAlcoholic;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
