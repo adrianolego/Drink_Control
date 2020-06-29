@@ -1,0 +1,5 @@
+rootProject.name = 'DrinkControl'
+
+project.storageCapacityAlcoholic = '500'
+project.storageCapacityNonAlcoholic = '400'
+
