@@ -15,10 +15,10 @@ import java.time.LocalDateTime;
 public class DrinkNonAlcoholic extends Drink {
 
     @Builder
-//    public DrinkNonAlcoholic(Integer id, LocalDateTime dateTime, Integer amount, Session session) {
-    public DrinkNonAlcoholic(Integer id, LocalDateTime dateTime, Integer amount) {
-//        super(id, dateTime, amount, session);
-        super(id, dateTime, amount);
+    public DrinkNonAlcoholic(Integer id, LocalDateTime dateTime, Integer amount, Session session) {
+//    public DrinkNonAlcoholic(Integer id, LocalDateTime dateTime, Integer amount) {
+        super(id, dateTime, amount, session);
+//        super(id, dateTime, amount);
     }
 
 }

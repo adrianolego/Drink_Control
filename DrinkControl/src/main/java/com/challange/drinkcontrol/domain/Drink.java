@@ -24,15 +24,15 @@ public abstract class Drink {
     private LocalDateTime dateTime;
     private Integer amount;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "session_id")
     private Session session;
 
-//    public Drink(Integer id, LocalDateTime dateTime, Integer amount, Session session) {
-    public Drink(Integer id, LocalDateTime dateTime, Integer amount) {
+    public Drink(Integer id, LocalDateTime dateTime, Integer amount, Session session) {
+//    public Drink(Integer id, LocalDateTime dateTime, Integer amount) {
         this.id = id;
         this.dateTime = dateTime;
         this.amount = amount;
-//        this.session = (session == null ? null : session);
+        this.session = (session == null ? null : session);
     }
 }

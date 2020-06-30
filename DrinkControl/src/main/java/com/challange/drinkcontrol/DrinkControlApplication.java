@@ -43,15 +43,15 @@ public class DrinkControlApplication implements CommandLineRunner {
                 .id(1)
                 .dateTime(localDateTime)
                 .amount(200)
-//                .session(session1)
+                .session(session1)
                 .percentAlcohol(25.0)
                 .build();
 
         Drink nonAlcoholic1 = DrinkNonAlcoholic.builder()
                 .id(1)
                 .dateTime(localDateTime)
-                .amount(200)
-//                .session(session1)
+                .amount(100)
+                .session(session2)
                 .build();
 
         drinkRepository.save(alcoholic1);
