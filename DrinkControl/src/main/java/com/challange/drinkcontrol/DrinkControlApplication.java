@@ -30,11 +30,11 @@ public class DrinkControlApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Session session1 = Session.builder().id(1).session("Session 1").build();
-        Session session2 = Session.builder().id(2).session("Session 2").build();
-        Session session3 = Session.builder().id(3).session("Session 3").build();
-        Session session4 = Session.builder().id(4).session("Session 4").build();
-        Session session5 = Session.builder().id(5).session("Session 5").build();
+        Session session1 = Session.builder().id(1).sessionDescription("Session 1").build();
+        Session session2 = Session.builder().id(2).sessionDescription("Session 2").build();
+        Session session3 = Session.builder().id(3).sessionDescription("Session 3").build();
+        Session session4 = Session.builder().id(4).sessionDescription("Session 4").build();
+        Session session5 = Session.builder().id(5).sessionDescription("Session 5").build();
 
         sessionRepository.saveAll(Arrays.asList(session1, session2, session3, session4, session5));
 

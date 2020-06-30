@@ -2,10 +2,12 @@ package com.challange.drinkcontrol.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
@@ -29,7 +31,6 @@ public abstract class Drink {
     private Session session;
 
     public Drink(Integer id, LocalDateTime dateTime, Integer amount, Session session) {
-//    public Drink(Integer id, LocalDateTime dateTime, Integer amount) {
         this.id = id;
         this.dateTime = dateTime;
         this.amount = amount;

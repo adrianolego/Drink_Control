@@ -1,11 +1,41 @@
 package com.challange.drinkcontrol.resource;
 
+import com.challange.drinkcontrol.domain.Session;
+import com.challange.drinkcontrol.dto.SessionDTO;
+import com.challange.drinkcontrol.service.SessionService;
 import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Api(value = "API REST Session")
 @RestController
 @RequestMapping("/session")
 public class SessionResource {
+
+    @Autowired
+    private SessionService sessionService;
+
+    @ApiOperation(value = "Find Session")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Session> find(@PathVariable Integer id) {
+        Session session = sessionService.find(id);
+        return ResponseEntity.ok().body(session);
+    }
+
+    @ApiOperation(value = "Find Sessions")
+    @RequestMapping(value = "/page", method = RequestMethod.GET)
+    public ResponseEntity<Page<SessionDTO>> findAllSessionPaginated(
+            @RequestParam(value = "initialPage", defaultValue = "0") Integer page,
+            @RequestParam(value = "linesAmount", defaultValue = "10") Integer linesPerPage,
+            @RequestParam(value = "orderField", defaultValue = "id") String orderBy,
+            @RequestParam(value = "ascOrDesc", defaultValue = "asc") String direction) {
+        Page<Session> listSessions = sessionService.findPage(page, linesPerPage, orderBy, direction);
+        Page<SessionDTO> listDto = listSessions.map(dto -> new SessionDTO(dto));
+        return ResponseEntity.ok().body(listDto);
+    }
 }
