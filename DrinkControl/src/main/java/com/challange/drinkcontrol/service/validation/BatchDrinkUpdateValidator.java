@@ -1,6 +1,6 @@
 package com.challange.drinkcontrol.service.validation;
 
-import com.challange.drinkcontrol.dto.DrinkDTO;
+import com.challange.drinkcontrol.dto.BatchDrinkDTO;
 import com.challange.drinkcontrol.resource.exception.FieldMessage;
 
 import javax.validation.ConstraintValidator;
@@ -8,14 +8,14 @@ import javax.validation.ConstraintValidatorContext;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BatchDrinkUpdateValidator implements ConstraintValidator<BatchDrinkUpdate, DrinkDTO> {
+public class BatchDrinkUpdateValidator implements ConstraintValidator<BatchDrinkUpdate, BatchDrinkDTO> {
 
     @Override
     public void initialize(BatchDrinkUpdate drinkInsert) {
     }
 
     @Override
-    public boolean isValid(DrinkDTO drinkDTO, ConstraintValidatorContext context) {
+    public boolean isValid(BatchDrinkDTO batchDrinkDTO, ConstraintValidatorContext context) {
         List<FieldMessage> list = new ArrayList<>();
 
 //        if ("".equals(sessionDTO.getSessionDescription())){

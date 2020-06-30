@@ -21,7 +21,6 @@ public class SessionService {
 
     public Session find(Integer id) {
         Optional<Session> session = sessionRepository.findById(id);
-
         return session.orElseThrow(() -> new ObjectNotFoundException("Session not found :Id" + id,
                 "Type: " + Session.class.getName()));
     }

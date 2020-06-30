@@ -2,7 +2,7 @@ package com.challange.drinkcontrol;
 
 import com.challange.drinkcontrol.domain.*;
 import com.challange.drinkcontrol.domain.enuns.DrinkTypeEnum;
-import com.challange.drinkcontrol.repository.DrinkRepository;
+import com.challange.drinkcontrol.repository.BatchDrinkRepository;
 import com.challange.drinkcontrol.repository.DrinkTypeRepository;
 import com.challange.drinkcontrol.repository.SessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class DrinkControlApplication implements CommandLineRunner {
     private SessionRepository sessionRepository;
 
     @Autowired
-    private DrinkRepository drinkRepository;
+    private BatchDrinkRepository drinkRepository;
 
     @Autowired
     private DrinkTypeRepository drinkTypeRepository;
@@ -49,6 +49,7 @@ public class DrinkControlApplication implements CommandLineRunner {
                 .build();
 
         drinkTypeRepository.saveAll(Arrays.asList(typeAlcoholic, typeNonAlcoholic));
+        drinkTypeRepository.saveAll(Arrays.asList(typeAlcoholic));
 
         Session session1 = Session.builder().id(1).sessionDescription("Session 1").build();
         Session session2 = Session.builder().id(2).sessionDescription("Session 2").build();
