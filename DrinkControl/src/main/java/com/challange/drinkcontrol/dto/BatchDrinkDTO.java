@@ -22,12 +22,13 @@ public class BatchDrinkDTO implements Serializable {
     private Integer id;
     @NotEmpty(message = "Required field")
     private Integer amount;
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime dateTime;
     @NotEmpty(message = "Required field")
     private Integer idSession;
+    @NotEmpty(message = "Required field")
     private Integer idDrinkType;
-//    private Double percentAlcohol;
+    @NotEmpty(message = "Required field")
+    private String responsiblePerson;
 
     public BatchDrinkDTO(Integer id, LocalDateTime dateTime, Integer amount, Integer idSession, Integer idDrinkType) {
         this.id = id;

@@ -34,7 +34,7 @@ public class BatchDrinkResource {
         return ResponseEntity.ok().body(batchDrink);
     }
 
-    @ApiOperation(value = "Find batches of drink")
+    @ApiOperation(value = "Find all batches of drink")
     @RequestMapping(value = "/page", method = RequestMethod.GET)
     public ResponseEntity<Page<BatchDrinkDTO>> findAllBatchesPaginated(
             @RequestParam(value = "initialPage", defaultValue = "0") Integer page,
@@ -75,4 +75,10 @@ public class BatchDrinkResource {
         batchDrinkService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+//    @ApiOperation(value = "Find drink by type")
+
+//    @ApiOperation(value = "Find total stored by type")
+
+//    @ApiOperation(value = "Find session free")
 }

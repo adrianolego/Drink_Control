@@ -22,6 +22,7 @@ public abstract class BatchDrink {
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime dateTime;
     private Integer amount;
+    private String responsiblePerson;
 
     @OneToOne
     @JoinColumn(name = "session_id")
