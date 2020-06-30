@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.util.List;
+import javax.validation.Valid;
+import java.net.URI;
 
 @Api(value = "API REST Session")
 @RestController
@@ -37,5 +39,34 @@ public class SessionResource {
         Page<Session> listSessions = sessionService.findPage(page, linesPerPage, orderBy, direction);
         Page<SessionDTO> listDto = listSessions.map(dto -> new SessionDTO(dto));
         return ResponseEntity.ok().body(listDto);
+    }
+
+    @ApiOperation(value = "Insert session")
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Void> insert(@Valid @RequestBody SessionDTO sessionDTO) {
+        Session session = sessionService.fromDTO(sessionDTO);
+        session = sessionService.insert(session);
+        URI uri = ServletUriComponentsBuilder
+                .fromCurrentRequestUri()
+                .path("/{id}")
+                .buildAndExpand(session.getId())
+                .toUri();
+        return ResponseEntity.created(uri).build();
+    }
+
+    @ApiOperation(value = "Update session")
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Void> update(@Valid @RequestBody SessionDTO sessionDTO, @PathVariable Integer id) {
+        sessionDTO.setId(id);
+        Session session = sessionService.fromDTO(sessionDTO);
+        sessionService.update(session);
+        return ResponseEntity.noContent().build();
+    }
+
+    @ApiOperation(value = "Delete session")
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        sessionService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

@@ -7,10 +7,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Constraint(validatedBy = DrinkUpdateValidator.class)
+@Constraint(validatedBy = BatchDrinkUpdateValidator.class)
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DrinkUpdate {
+public @interface BatchDrinkUpdate {
 
     String message() default "Validation error";
 

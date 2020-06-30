@@ -9,5 +9,5 @@ import javax.annotation.Resource;
 @Api(value = "API REST Drink")
 @RestController
 @RequestMapping("/drink")
-public class DrinkResource {
+public class BatchDrinkResource {
 }

@@ -1,10 +1,9 @@
 package com.challange.drinkcontrol;
 
-import com.challange.drinkcontrol.domain.Drink;
-import com.challange.drinkcontrol.domain.DrinkAlcoholic;
-import com.challange.drinkcontrol.domain.DrinkNonAlcoholic;
-import com.challange.drinkcontrol.domain.Session;
+import com.challange.drinkcontrol.domain.*;
+import com.challange.drinkcontrol.domain.enuns.DrinkTypeEnum;
 import com.challange.drinkcontrol.repository.DrinkRepository;
+import com.challange.drinkcontrol.repository.DrinkTypeRepository;
 import com.challange.drinkcontrol.repository.SessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -23,12 +22,33 @@ public class DrinkControlApplication implements CommandLineRunner {
     @Autowired
     private DrinkRepository drinkRepository;
 
+    @Autowired
+    private DrinkTypeRepository drinkTypeRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(DrinkControlApplication.class, args);
     }
 
     @Override
     public void run(String... args) throws Exception {
+
+        DrinkType typeAlcoholic = DrinkType.builder()
+                .id(DrinkTypeEnum.ALCOHOLIC.getCode())
+                .description("Alcoholic")
+                .capacity(500)
+                .freeSpace(500)
+                .totalStoreged(0)
+                .build();
+
+        DrinkType typeNonAlcoholic = DrinkType.builder()
+                .id(DrinkTypeEnum.NON_ALCOHOLIC.getCode())
+                .description("NonAlcoholic")
+                .capacity(400)
+                .freeSpace(400)
+                .totalStoreged(0)
+                .build();
+
+        drinkTypeRepository.saveAll(Arrays.asList(typeAlcoholic, typeNonAlcoholic));
 
         Session session1 = Session.builder().id(1).sessionDescription("Session 1").build();
         Session session2 = Session.builder().id(2).sessionDescription("Session 2").build();
@@ -39,23 +59,24 @@ public class DrinkControlApplication implements CommandLineRunner {
         sessionRepository.saveAll(Arrays.asList(session1, session2, session3, session4, session5));
 
         LocalDateTime localDateTime = LocalDateTime.now();
-        Drink alcoholic1 =  DrinkAlcoholic.builder()
+        BatchDrink alcoholic1 = DrinkAlcoholic.builder()
                 .id(1)
                 .dateTime(localDateTime)
                 .amount(200)
                 .session(session1)
                 .percentAlcohol(25.0)
+                .drinkType(typeAlcoholic)
                 .build();
 
-        Drink nonAlcoholic1 = DrinkNonAlcoholic.builder()
-                .id(1)
+        BatchDrink nonAlcoholic1 = DrinkNonAlcoholic.builder()
+                .id(2)
                 .dateTime(localDateTime)
                 .amount(100)
                 .session(session2)
+                .drinkType(typeNonAlcoholic)
                 .build();
 
-        drinkRepository.save(alcoholic1);
-        drinkRepository.save(nonAlcoholic1);
+        drinkRepository.saveAll(Arrays.asList(alcoholic1, nonAlcoholic1));
 
     }
 }

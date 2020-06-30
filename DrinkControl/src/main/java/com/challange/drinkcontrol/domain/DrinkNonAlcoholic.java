@@ -12,13 +12,11 @@ import java.time.LocalDateTime;
 @Setter
 @ToString
 @JsonTypeName("nonAlcoholic")
-public class DrinkNonAlcoholic extends Drink {
+public class DrinkNonAlcoholic extends BatchDrink {
 
     @Builder
-    public DrinkNonAlcoholic(Integer id, LocalDateTime dateTime, Integer amount, Session session) {
-//    public DrinkNonAlcoholic(Integer id, LocalDateTime dateTime, Integer amount) {
-        super(id, dateTime, amount, session);
-//        super(id, dateTime, amount);
+    public DrinkNonAlcoholic(Integer id, LocalDateTime dateTime,
+                             Integer amount, Session session, DrinkType drinkType) {
+        super(id, dateTime, amount, session, drinkType);
     }
-
 }

@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @Inheritance(strategy = InheritanceType.JOINED)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
-public abstract class Drink {
+public abstract class BatchDrink {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,10 +30,15 @@ public abstract class Drink {
     @JoinColumn(name = "session_id")
     private Session session;
 
-    public Drink(Integer id, LocalDateTime dateTime, Integer amount, Session session) {
+    @OneToOne
+    @JoinColumn(name = "drinktype_id")
+    private DrinkType drinkType;
+
+    public BatchDrink(Integer id, LocalDateTime dateTime, Integer amount, Session session, DrinkType drinkType) {
         this.id = id;
         this.dateTime = dateTime;
         this.amount = amount;
         this.session = (session == null ? null : session);
+        this.drinkType = (drinkType == null ? null : drinkType);
     }
 }

@@ -1,6 +1,5 @@
 package com.challange.drinkcontrol.service.validation;
 
-import com.challange.drinkcontrol.domain.Session;
 import com.challange.drinkcontrol.dto.DrinkDTO;
 import com.challange.drinkcontrol.resource.exception.FieldMessage;
 
@@ -9,10 +8,10 @@ import javax.validation.ConstraintValidatorContext;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DrinkUpdateValidator implements ConstraintValidator<DrinkUpdate, DrinkDTO> {
+public class BatchDrinkUpdateValidator implements ConstraintValidator<BatchDrinkUpdate, DrinkDTO> {
 
     @Override
-    public void initialize(DrinkUpdate drinkInsert) {
+    public void initialize(BatchDrinkUpdate drinkInsert) {
     }
 
     @Override

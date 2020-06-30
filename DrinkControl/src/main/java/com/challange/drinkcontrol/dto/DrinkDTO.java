@@ -1,6 +1,6 @@
 package com.challange.drinkcontrol.dto;
 
-import com.challange.drinkcontrol.service.validation.DrinkUpdate;
+import com.challange.drinkcontrol.service.validation.BatchDrinkUpdate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@DrinkUpdate
+@BatchDrinkUpdate
 public class DrinkDTO implements Serializable {
 
     private Integer id;
