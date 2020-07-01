@@ -1,7 +1,7 @@
 package com.challange.drinkcontrol.resource;
 
-import com.challange.drinkcontrol.domain.BatchDrink;
-import com.challange.drinkcontrol.domain.AlcoholicDrink;
+import com.challange.drinkcontrol.domain.DrinkBatch;
+import com.challange.drinkcontrol.domain.AlcoholicDrinkBatch;
 import com.challange.drinkcontrol.dto.BatchDrinkDTO;
 import com.challange.drinkcontrol.dto.DrinkAlcoholicDTO;
 import com.challange.drinkcontrol.dto.DrinkNonAlcoholicDTO;
@@ -27,9 +27,9 @@ public class BatchDrinkResource {
 
     @ApiOperation(value = "Find Batch of drink")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<BatchDrink> find(@PathVariable Integer id) {
-        BatchDrink batchDrink = batchDrinkService.find(id);
-        return ResponseEntity.ok().body(batchDrink);
+    public ResponseEntity<DrinkBatch> find(@PathVariable Integer id) {
+        DrinkBatch drinkBatch = batchDrinkService.find(id);
+        return ResponseEntity.ok().body(drinkBatch);
     }
 
     @ApiOperation(value = "Find all batches of drink")
@@ -39,21 +39,21 @@ public class BatchDrinkResource {
             @RequestParam(value = "linesAmount", defaultValue = "10") Integer linesPerPage,
             @RequestParam(value = "orderField", defaultValue = "id") String orderBy,
             @RequestParam(value = "ascOrDesc", defaultValue = "asc") String direction) {
-        Page<BatchDrink> listBatches = batchDrinkService.findPage(page, linesPerPage, orderBy, direction);
+        Page<DrinkBatch> listBatches = batchDrinkService.findPage(page, linesPerPage, orderBy, direction);
         Page<BatchDrinkDTO> listDto = listBatches.map(dto ->
-                (dto instanceof AlcoholicDrink ? new DrinkAlcoholicDTO(dto) : new DrinkNonAlcoholicDTO(dto)));
+                (dto instanceof AlcoholicDrinkBatch ? new DrinkAlcoholicDTO(dto) : new DrinkNonAlcoholicDTO(dto)));
         return ResponseEntity.ok().body(listDto);
     }
 
     @ApiOperation(value = "Insert Batch of drink")
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> insert(@Valid @RequestBody BatchDrinkDTO batchDrinkDTO) {
-        BatchDrink batchDrink = batchDrinkService.fromDTO(batchDrinkDTO);
-        batchDrink = batchDrinkService.insert(batchDrink);
+        DrinkBatch drinkBatch = batchDrinkService.fromDTO(batchDrinkDTO);
+        drinkBatch = batchDrinkService.insert(drinkBatch);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
                 .path("/{id}")
-                .buildAndExpand(batchDrink.getId())
+                .buildAndExpand(drinkBatch.getId())
                 .toUri();
         return ResponseEntity.created(uri).build();
     }
@@ -62,8 +62,8 @@ public class BatchDrinkResource {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Void> update(@Valid @RequestBody BatchDrinkDTO batchDrinkDTO, @PathVariable Integer id) {
         batchDrinkDTO.setId(id);
-        BatchDrink batchDrink = batchDrinkService.fromDTO(batchDrinkDTO);
-        batchDrinkService.update(batchDrink);
+        DrinkBatch drinkBatch = batchDrinkService.fromDTO(batchDrinkDTO);
+        batchDrinkService.update(drinkBatch);
         return ResponseEntity.noContent().build();
     }
 

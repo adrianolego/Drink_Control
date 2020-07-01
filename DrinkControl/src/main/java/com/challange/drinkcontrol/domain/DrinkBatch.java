@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @EqualsAndHashCode
-public abstract class BatchDrink {
+public abstract class DrinkBatch {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +32,7 @@ public abstract class BatchDrink {
     @JoinColumn(name = "drinktype_id")
     private DrinkType drinkType;
 
-    public BatchDrink(Integer id, LocalDateTime dateTime, Integer amount, Session session, DrinkType drinkType) {
+    public DrinkBatch(Integer id, LocalDateTime dateTime, Integer amount, Session session, DrinkType drinkType) {
         this.id = id;
         this.dateTime = dateTime;
         this.amount = amount;

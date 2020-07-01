@@ -10,12 +10,12 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-public class NonAlcoholicDrink extends BatchDrink {
+public class NonAlcoholicDrinkBatch extends DrinkBatch {
 
     @Builder
-    public NonAlcoholicDrink(Integer id, LocalDateTime dateTime,
-                             Integer amount, Session session,
-                             DrinkType drinkType) {
+    public NonAlcoholicDrinkBatch(Integer id, LocalDateTime dateTime,
+                                  Integer amount, Session session,
+                                  DrinkType drinkType) {
         super(id, dateTime, amount, session, drinkType);
     }
 }

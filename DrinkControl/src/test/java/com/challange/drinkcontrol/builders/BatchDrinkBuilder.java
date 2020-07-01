@@ -1,8 +1,8 @@
 package com.challange.drinkcontrol.builders;
 
-import com.challange.drinkcontrol.domain.BatchDrink;
-import com.challange.drinkcontrol.domain.AlcoholicDrink;
-import com.challange.drinkcontrol.domain.NonAlcoholicDrink;
+import com.challange.drinkcontrol.domain.DrinkBatch;
+import com.challange.drinkcontrol.domain.AlcoholicDrinkBatch;
+import com.challange.drinkcontrol.domain.NonAlcoholicDrinkBatch;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,15 +12,15 @@ import java.time.LocalDateTime;
 @Setter
 public class BatchDrinkBuilder {
 
-    private AlcoholicDrink alcoholicDrink;
-    private NonAlcoholicDrink nonAlcoholicDrink;
+    private AlcoholicDrinkBatch alcoholicDrink;
+    private NonAlcoholicDrinkBatch nonAlcoholicDrink;
 
     private BatchDrinkBuilder() {
     }
 
     public static BatchDrinkBuilder oneAlcoholicBatchDrink() {
         BatchDrinkBuilder builder = new BatchDrinkBuilder();
-        builder.alcoholicDrink = new AlcoholicDrink();
+        builder.alcoholicDrink = new AlcoholicDrinkBatch();
         builder.alcoholicDrink.setId(10);
         builder.alcoholicDrink.setDateTime(LocalDateTime.now());
         builder.alcoholicDrink.setAmount(100);
@@ -31,7 +31,7 @@ public class BatchDrinkBuilder {
 
     public static BatchDrinkBuilder oneNonAlcoholicBatchDrink() {
         BatchDrinkBuilder builder = new BatchDrinkBuilder();
-        builder.nonAlcoholicDrink = new NonAlcoholicDrink();
+        builder.nonAlcoholicDrink = new NonAlcoholicDrinkBatch();
         builder.nonAlcoholicDrink.setId(20);
         builder.nonAlcoholicDrink.setDateTime(LocalDateTime.now());
         builder.nonAlcoholicDrink.setAmount(200);
@@ -39,7 +39,7 @@ public class BatchDrinkBuilder {
         return builder;
     }
 
-    public BatchDrink now() {
-        return (BatchDrink) alcoholicDrink != null ? alcoholicDrink : nonAlcoholicDrink;
+    public DrinkBatch now() {
+        return (DrinkBatch) alcoholicDrink != null ? alcoholicDrink : nonAlcoholicDrink;
     }
 }

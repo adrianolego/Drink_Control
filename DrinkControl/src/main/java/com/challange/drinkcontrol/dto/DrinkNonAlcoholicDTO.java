@@ -1,6 +1,6 @@
 package com.challange.drinkcontrol.dto;
 
-import com.challange.drinkcontrol.domain.BatchDrink;
+import com.challange.drinkcontrol.domain.DrinkBatch;
 import lombok.*;
 
 @NoArgsConstructor
@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 public class DrinkNonAlcoholicDTO extends BatchDrinkDTO {
 
-    public DrinkNonAlcoholicDTO(BatchDrink dto) {
+    public DrinkNonAlcoholicDTO(DrinkBatch dto) {
         super(dto.getId(), dto.getDateTime(),dto.getAmount(), dto.getSession().getId(), dto.getDrinkType().getId());
     }
 }

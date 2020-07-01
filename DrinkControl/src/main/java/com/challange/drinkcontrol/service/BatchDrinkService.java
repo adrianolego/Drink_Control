@@ -27,27 +27,27 @@ public class BatchDrinkService {
     @Autowired
     private DrinkTypeService drinkTypeService;
 
-    public BatchDrink find(Integer id) {
-        Optional<BatchDrink> batchDrink = batchDrinkRepository.findById(id);
+    public DrinkBatch find(Integer id) {
+        Optional<DrinkBatch> batchDrink = batchDrinkRepository.findById(id);
         return batchDrink.orElseThrow(() -> new ObjectNotFoundException("Drink batch not found :Id" + id,
-                "Type: " + BatchDrink.class.getName()));
+                "Type: " + DrinkBatch.class.getName()));
     }
 
-    public Page<BatchDrink> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
+    public Page<DrinkBatch> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Sort.Direction.valueOf(direction.toUpperCase()), orderBy);
         return batchDrinkRepository.findAll(pageRequest);
     }
 
-    public BatchDrink fromDTO(BatchDrinkDTO batchDrinkDTO) {
+    public DrinkBatch fromDTO(BatchDrinkDTO batchDrinkDTO) {
 
-        BatchDrink batchDrink = null;
+        DrinkBatch drinkBatch = null;
 
         Session session = sessionService.find(batchDrinkDTO.getIdSession());
         DrinkType drinkType = drinkTypeService.find(batchDrinkDTO.getIdDrinkType());
 
         if (batchDrinkDTO instanceof DrinkAlcoholicDTO) {
 
-            batchDrink = new AlcoholicDrink(batchDrinkDTO.getId()
+            drinkBatch = new AlcoholicDrinkBatch(batchDrinkDTO.getId()
                     , batchDrinkDTO.getDateTime()
                     , batchDrinkDTO.getAmount()
                     , session
@@ -57,22 +57,22 @@ public class BatchDrinkService {
         }
 
         if (batchDrinkDTO instanceof DrinkNonAlcoholicDTO) {
-            batchDrink = new NonAlcoholicDrink(batchDrinkDTO.getId()
+            drinkBatch = new NonAlcoholicDrinkBatch(batchDrinkDTO.getId()
                     , batchDrinkDTO.getDateTime()
                     , batchDrinkDTO.getAmount()
                     , session
                     , drinkType
             );
         }
-        return batchDrink;
+        return drinkBatch;
     }
 
-    public BatchDrink insert(BatchDrink batchDrink) {
-        return batchDrinkRepository.save(batchDrink);
+    public DrinkBatch insert(DrinkBatch drinkBatch) {
+        return batchDrinkRepository.save(drinkBatch);
     }
 
-    public void update(BatchDrink batchDrink) {
-        batchDrinkRepository.save(batchDrink);
+    public void update(DrinkBatch drinkBatch) {
+        batchDrinkRepository.save(drinkBatch);
     }
 
     public void delete(Integer id) {

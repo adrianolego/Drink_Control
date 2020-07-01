@@ -60,7 +60,7 @@ public class DrinkControlApplication implements CommandLineRunner {
         sessionRepository.saveAll(Arrays.asList(session1, session2, session3, session4, session5));
 
         LocalDateTime localDateTime = LocalDateTime.now();
-        BatchDrink alcoholic1 = AlcoholicDrink.builder()
+        DrinkBatch alcoholic1 = AlcoholicDrinkBatch.builder()
                 .id(1)
                 .dateTime(localDateTime)
                 .amount(200)
@@ -69,7 +69,7 @@ public class DrinkControlApplication implements CommandLineRunner {
                 .drinkType(typeAlcoholic)
                 .build();
 
-        BatchDrink nonAlcoholic1 = NonAlcoholicDrink.builder()
+        DrinkBatch nonAlcoholic1 = NonAlcoholicDrinkBatch.builder()
                 .id(2)
                 .dateTime(localDateTime)
                 .amount(100)
