@@ -4,8 +4,8 @@ import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(value = "API REST Drink Non Alcoholic")
+@Api(value = "API REST Drink Alcoholic")
 @RestController
-@RequestMapping("/drinkNonAlcoholic")
-public class DrinkNonAlcoholicResource {
+@RequestMapping("/drinkAlcoholic")
+public class AlcoholicDrinkResource {
 }

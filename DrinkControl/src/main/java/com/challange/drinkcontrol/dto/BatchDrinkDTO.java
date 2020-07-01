@@ -1,11 +1,6 @@
 package com.challange.drinkcontrol.dto;
 
-import com.challange.drinkcontrol.domain.BatchDrink;
-import com.challange.drinkcontrol.domain.DrinkAlcoholic;
-import com.challange.drinkcontrol.domain.Session;
-import com.challange.drinkcontrol.domain.enuns.DrinkTypeEnum;
 import com.challange.drinkcontrol.service.validation.BatchDrinkUpdate;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.validation.constraints.NotEmpty;

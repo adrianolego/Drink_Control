@@ -1,12 +1,10 @@
 package com.challange.drinkcontrol.resource;
 
 import com.challange.drinkcontrol.domain.BatchDrink;
-import com.challange.drinkcontrol.domain.DrinkAlcoholic;
-import com.challange.drinkcontrol.domain.Session;
+import com.challange.drinkcontrol.domain.AlcoholicDrink;
 import com.challange.drinkcontrol.dto.BatchDrinkDTO;
 import com.challange.drinkcontrol.dto.DrinkAlcoholicDTO;
 import com.challange.drinkcontrol.dto.DrinkNonAlcoholicDTO;
-import com.challange.drinkcontrol.dto.SessionDTO;
 import com.challange.drinkcontrol.service.BatchDrinkService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -43,7 +41,7 @@ public class BatchDrinkResource {
             @RequestParam(value = "ascOrDesc", defaultValue = "asc") String direction) {
         Page<BatchDrink> listBatches = batchDrinkService.findPage(page, linesPerPage, orderBy, direction);
         Page<BatchDrinkDTO> listDto = listBatches.map(dto ->
-                (dto instanceof DrinkAlcoholic ? new DrinkAlcoholicDTO(dto) : new DrinkNonAlcoholicDTO(dto)));
+                (dto instanceof AlcoholicDrink ? new DrinkAlcoholicDTO(dto) : new DrinkNonAlcoholicDTO(dto)));
         return ResponseEntity.ok().body(listDto);
     }
 

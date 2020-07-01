@@ -29,7 +29,7 @@ public class BatchDrinkService {
 
     public BatchDrink find(Integer id) {
         Optional<BatchDrink> batchDrink = batchDrinkRepository.findById(id);
-        return batchDrink.orElseThrow(() -> new ObjectNotFoundException("Batch of drink not found :Id" + id,
+        return batchDrink.orElseThrow(() -> new ObjectNotFoundException("Drink batch not found :Id" + id,
                 "Type: " + BatchDrink.class.getName()));
     }
 
@@ -47,7 +47,7 @@ public class BatchDrinkService {
 
         if (batchDrinkDTO instanceof DrinkAlcoholicDTO) {
 
-            batchDrink = new DrinkAlcoholic(batchDrinkDTO.getId()
+            batchDrink = new AlcoholicDrink(batchDrinkDTO.getId()
                     , batchDrinkDTO.getDateTime()
                     , batchDrinkDTO.getAmount()
                     , session
@@ -57,7 +57,7 @@ public class BatchDrinkService {
         }
 
         if (batchDrinkDTO instanceof DrinkNonAlcoholicDTO) {
-            batchDrink = new DrinkNonAlcoholic(batchDrinkDTO.getId()
+            batchDrink = new NonAlcoholicDrink(batchDrinkDTO.getId()
                     , batchDrinkDTO.getDateTime()
                     , batchDrinkDTO.getAmount()
                     , session

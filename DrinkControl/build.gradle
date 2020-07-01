@@ -28,7 +28,7 @@ dependencies {
     compile 'javax.validation:validation-api:2.0.1.Final'
     runtime 'com.h2database:h2:1.4.199'
     testCompile 'junit:junit:4.13'
-    testCompile 'org.mockito:mockito-all:1.10.19'
+    testCompile 'org.mockito:mockito-core:3.3.3'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

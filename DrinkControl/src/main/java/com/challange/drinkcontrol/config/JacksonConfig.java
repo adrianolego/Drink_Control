@@ -1,7 +1,7 @@
 package com.challange.drinkcontrol.config;
 
-import com.challange.drinkcontrol.domain.DrinkAlcoholic;
-import com.challange.drinkcontrol.domain.DrinkNonAlcoholic;
+import com.challange.drinkcontrol.domain.AlcoholicDrink;
+import com.challange.drinkcontrol.domain.NonAlcoholicDrink;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,8 +14,8 @@ public class JacksonConfig {
     public Jackson2ObjectMapperBuilder objectMapperBuilder() {
         Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder() {
             public void configure(ObjectMapper objectMapper) {
-                objectMapper.registerSubtypes(DrinkAlcoholic.class);
-                objectMapper.registerSubtypes(DrinkNonAlcoholic.class);
+                objectMapper.registerSubtypes(AlcoholicDrink.class);
+                objectMapper.registerSubtypes(NonAlcoholicDrink.class);
                 super.configure(objectMapper);
             }
         };
